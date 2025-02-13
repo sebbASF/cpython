@@ -7,6 +7,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Message-ID: 
     <15090.61304.110929.45684@aaa.zzz.org>
+References: 
+    <15261.36209.358846.118674xxxxyyyyyyyyyxyxyxyxyxyy@anthem.python.org>
 From: bbb@ddd.com (John X. Doe)
 To: bbb@zzz.org
 Subject: This is a test message
