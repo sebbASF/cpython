@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Show that msg.as_bytes() is not consistent across Python versions
-# Starting with 3.12, wrapped 
+
 import email
 import hashlib
 
