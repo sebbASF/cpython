@@ -62,10 +62,10 @@ TEST_DATA = [
     DataEntry('msg_45.txt', 965, '0dc555b1792a3599b3236527fd96f5dd', 965, '0dc555b1792a3599b3236527fd96f5dd'),
     DataEntry('msg_46.txt', 816, '748de2ed8d11473c03e05ed3acf871fc', 816, '748de2ed8d11473c03e05ed3acf871fc'),
     DataEntry('msg_47.txt', 232, '8bafae7751f742a9e5cc83c75d281469', 235, '378c4100251c58f7929bfb65d7134b4b'),
-    DataEntry('msg_50.txt', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61'),    
-    DataEntry('msg_51.txt', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1'),    
-    DataEntry('msg_52.txt', 546, '7d20cf09c7fcbfcb8abf928521a93165', 546, '7d20cf09c7fcbfcb8abf928521a93165'),    
-    DataEntry('msg_53.txt', 586, 'a887d9480e5318313f7d86abb1005d24', 586, 'a887d9480e5318313f7d86abb1005d24'),    
+    DataEntry('msg_50.txt', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61'),
+    DataEntry('msg_51.txt', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1'),
+    DataEntry('msg_52.txt', 546, '7d20cf09c7fcbfcb8abf928521a93165', 546, '7d20cf09c7fcbfcb8abf928521a93165'),
+    DataEntry('msg_53.txt', 586, 'a887d9480e5318313f7d86abb1005d24', 586, 'a887d9480e5318313f7d86abb1005d24'),
 ]
 
 DATA_SOURCE = 'Lib/test/test_email/data'
