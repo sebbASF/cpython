@@ -64,6 +64,8 @@ TEST_DATA = [
     DataEntry('msg_47.txt', 232, '8bafae7751f742a9e5cc83c75d281469', 235, '378c4100251c58f7929bfb65d7134b4b'),
     DataEntry('msg_50.txt', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61', 545, 'd4b1d7a882266e5c28a2e1a376ab5b61'),    
     DataEntry('msg_51.txt', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1', 551, 'eddd5f1ac04f16a9e6c0d7452ff8c4d1'),    
+    DataEntry('msg_52.txt', 546, '7d20cf09c7fcbfcb8abf928521a93165', 546, '7d20cf09c7fcbfcb8abf928521a93165'),    
+    DataEntry('msg_53.txt', 586, 'a887d9480e5318313f7d86abb1005d24', 586, 'a887d9480e5318313f7d86abb1005d24'),    
 ]
 
 DATA_SOURCE = 'Lib/test/test_email/data'
@@ -78,18 +80,26 @@ def testmsg(filename):
     asbytes = msg.as_bytes()
     lbytes = len(asbytes)
     hbytes = hashlib.md5(asbytes).hexdigest()
-    return [ldata, hdata, lbytes, hbytes]
+    return [ldata, hdata, lbytes, hbytes, data, asbytes]
 
 def main():
     print('Start')
     errors = 0
     for e in TEST_DATA:
-        _ldata, hdata, _lbytes, hbytes = testmsg(e.name)
+        ldata, hdata, lbytes, hbytes, data, asbytes = testmsg(e.name)
         # This is fatal
-        assert hdata == e.datahash, f"Bad input data: expected: {hdata}, actual {e.datahash}"
-        if hbytes != e.byteshash: # fail at end
-            print(f"{e.name}: Bad output data, expected: {hbytes}, actual {e.byteshash}")
+        assert ldata == e.datalen and hdata == e.datahash, \
+            f"Bad input data: expected: {e.datalen} {e.datahash}, actual: {ldata} {hdata}"
+        if lbytes != e.byteslen or hbytes != e.byteshash: # fail at end
+            print(f"{e.name}: Bad output data, expected: {e.byteslen} {e.byteshash}, actual: {lbytes} {hbytes}")
             errors += 1
+            ds = data.split(b'\n')
+            bs = asbytes.split(b'\n')
+            for idx,x in enumerate(ds):
+                if x != bs[idx]:
+                    print(idx,x)
+                    print(idx,bs[idx])
+                    break
     assert errors == 0, f"Errors detected: {errors}"
     print('Done')
         
