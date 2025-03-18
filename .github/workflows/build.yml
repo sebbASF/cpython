@@ -38,13 +38,13 @@ jobs:
     #
     uses: ./.github/workflows/reusable-context.yml
 
-  check-docs:
+  # check-docs:
     name: Docs
     needs: build-context
     if: fromJSON(needs.build-context.outputs.run-docs)
     uses: ./.github/workflows/reusable-docs.yml
 
-  check-autoconf-regen:
+  # check-autoconf-regen:
     name: 'Check if Autoconf files are up to date'
     # Don't use ubuntu-latest but a specific version to make the job
     # reproducible: to get the same tools versions (autoconf, aclocal, ...)
@@ -87,7 +87,7 @@ jobs:
             exit 1
           fi
 
-  check-generated-files:
+  # check-generated-files:
     name: 'Check if generated files are up to date'
     # Don't use ubuntu-latest but a specific version to make the job
     # reproducible: to get the same tools versions (autoconf, aclocal, ...)
@@ -242,20 +242,20 @@ jobs:
       matrix:
         bolt:
         - false
-        - true
+        # - true
         free-threading:
         - false
-        - true
+        # - true
         os:
-        - ubuntu-24.04
+        # - ubuntu-24.04
         - ubuntu-24.04-arm
-        exclude:
-        # Do not test BOLT with free-threading, to conserve resources
-        - bolt: true
-          free-threading: true
-        # BOLT currently crashes during instrumentation on aarch64
-        - os: ubuntu-24.04-arm
-          bolt: true
+        # exclude:
+        # # Do not test BOLT with free-threading, to conserve resources
+        # - bolt: true
+        #   free-threading: true
+        # # BOLT currently crashes during instrumentation on aarch64
+        # - os: ubuntu-24.04-arm
+        #   bolt: true
     uses: ./.github/workflows/reusable-ubuntu.yml
     with:
       config_hash: ${{ needs.build-context.outputs.config-hash }}

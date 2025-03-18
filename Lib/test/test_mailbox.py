@@ -14,6 +14,7 @@ from test.support import refleak_helper
 from test.support import socket_helper
 import unittest
 import textwrap
+sys.path.insert(0,'/sebb/git/sebb/cpython/Lib')
 import mailbox
 import glob
 
