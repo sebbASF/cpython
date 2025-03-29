@@ -70,8 +70,22 @@ TEST_DATA = [
 
 DATA_SOURCE = 'Lib/test/test_email/data'
 
+def orig_header_source_parse(self, sourcelines):
+    """+
+    The name is parsed as everything up to the ':' and returned unmodified.
+    The value is determined by stripping leading whitespace off the
+    remainder of the first line, joining all subsequent lines together, and
+    stripping any trailing carriage return or linefeed characters.  (This
+    is the same as Compat32).
+
+    """
+    name, value = sourcelines[0].split(':', 1)
+    value = value.lstrip(' \t') + ''.join(sourcelines[1:])
+    return (name, value.rstrip('\r\n'))
+
 def testmsg(filename):
     policy = email.policy.default.clone(refold_source='none')
+    policy.header_source_parse = orig_header_source_parse
     with open(f"{DATA_SOURCE}/{filename}", 'rb') as fp:
         data = fp.read()
     ldata = len(data)
