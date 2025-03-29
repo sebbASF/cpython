@@ -73,6 +73,7 @@ DATA_SOURCE = 'Lib/test/test_email/data'
 
 def testmsg(filename):
     policy = email.policy.compat32.clone(refold_source='none')
+    print(policy.__class__)
     with open(f"{DATA_SOURCE}/{filename}", 'rb') as fp:
         data = fp.read()
     ldata = len(data)
